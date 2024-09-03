@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <h1 class="col-12 text-center mt-3 mb-5">All Games</h1>
+  </div>
+  <div class="row mb-4">
+    <div class="col-12 col-sm-3 mb-3">
+      <select
+        class="form-select"
+        [(ngModel)]="selectedGenre"
+        (ngModelChange)="searchGameCategory()"
+      >
+        <option value="" selected>Genre</option>
+        <option *ngFor="let genre of genres" [value]="genre">
+          {{ genre }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col mb-3">
+      <input
+        type="text"
+        class="form-control col"
+        placeholder="Search"
+        [(ngModel)]="search"
+        (ngModelChange)="searchGame()"
+      />
+    </div>
+
+    <div class="col-12 col-sm-3 mb-3">
+      <select
+        class="form-select col-3"
+        [(ngModel)]="selectedPlatform"
+        (ngModelChange)="searchGamePlataform()"
+      >
+        <option value="" selected>Platform</option>
+        <option *ngFor="let platform of platforms" [value]="platform">
+          {{ platform }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div
+      *ngFor="let item of allGames; let i = index; trackBy: trackByIndex"
+      class="col-12 col-sm-6 col-md-4 col-lg-3"
+    >
+      <app-card
+        [title]="item.title"
+        [description]="item.short_description"
+        [image]="item.thumbnail"
+        [link]="item.game_url"
+      ></app-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center mt-3 mb-4">
+      <ngb-pagination
+        [collectionSize]="allGamesAux.length"
+        [(page)]="page"
+        [maxSize]="5"
+        [rotate]="true"
+        [ellipses]="false"
+        [boundaryLinks]="true"
+        [pageSize]="pageSize"
+        (pageChange)="changePage($event)"
+      />
+    </div>
+  </div>
+</div>

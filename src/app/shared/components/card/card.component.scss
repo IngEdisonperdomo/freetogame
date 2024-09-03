@@ -1,0 +1,11 @@
+.card {
+  &-description {
+    min-height: 80px;
+    max-height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+  }
+}
