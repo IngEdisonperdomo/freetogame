@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FreetogameService } from '@shared/services/freetogame.service';
-import { CATEGORY, PLATFORM } from '@shared/data/category.json';
-import { FreetogameI, GenreI } from '@shared/interfaces/freetogame';
+import CATEGORIES from '@shared/data/category.json';
+import PLATFORMS from '@shared/data/platforms.json';
+import { FreetogameI } from '@shared/interfaces/freetogame';
 
 @Component({
   selector: 'app-home',
@@ -16,12 +17,14 @@ export class HomeComponent implements OnInit {
   search = '';
   selectedGenre = '';
   selectedPlatform = '';
-  genres = CATEGORY;
-  platforms = PLATFORM;
+  genres: string[] = [];
+  platforms: string[] = [];
 
   constructor(private freetogameService: FreetogameService) {}
 
   ngOnInit() {
+    this.genres = CATEGORIES;
+    this.platforms = PLATFORMS;
     this.freetogameService.getGames().subscribe((data) => {
       this.allGamesAux = data;
       this.pagination(data);

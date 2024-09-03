@@ -1,11 +1,28 @@
 .card {
-  &-description {
-    min-height: 80px;
-    max-height: 80px;
+  &-title {
+    -webkit-line-clamp: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  &-description {
+    height: 73px;
+    max-height: 80px;
     -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+  &-link {
+    width: 100%;
+    max-width: 272px;
+    margin: 0px auto;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
   }
 }
